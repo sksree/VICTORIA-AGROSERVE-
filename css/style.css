@@ -25,11 +25,17 @@
 
 
 .navbar-brand .brand-text {
+<<<<<<< HEAD
   font-size: 2.2rem;   /* bigger on desktop */
   font-weight: 500;
   white-space: nowrap;
   font-family: Lucida Sans,Verdana, Arial, Tahoma, Serif;
   font-variant: small-caps;
+=======
+  font-size: 1.9rem;   /* bigger on desktop */
+  font-weight: 590;
+  white-space: nowrap;
+>>>>>>> f7e71e62b1898db66278d625f39e04d78bcff748
 }
 
 @media (max-width: 768px) {
