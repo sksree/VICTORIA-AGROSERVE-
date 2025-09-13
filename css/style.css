@@ -24,6 +24,97 @@
 
 
 
+/* Wrapper for desktop spacing */
+.table-container {
+  max-width: 1200px;
+  margin: 0 auto; /* center the table */
+  padding: 0 20px; /* space left and right */
+  overflow-x: auto; /* safe scroll on small screens */
+  margin-bottom: 60px;
+}
+
+/* Table grid layout (desktop view) */
+table {
+  display: grid;
+  border-collapse: collapse;
+  width: 100%;
+  grid-template-columns:
+    minmax(50px, 0.5fr)
+    minmax(200px, 2fr)
+    minmax(200px, 1.5fr);
+}
+
+thead,
+tbody,
+tr {
+  display: contents;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ✅ Sticky header */
+th {
+  background: #d9b3b3;
+  font-weight: bold;
+  text-align: left;
+  color: #000;
+  position: sticky;
+  top: 0;
+  z-index: 2; /* keeps above table cells */
+}
+
+td {
+  color: #333;
+  font-size: 0.95rem;
+}
+
+tr:nth-child(even) td {
+  background: #fdf9f9;
+}
+
+/* ✅ Mobile stacked view with card design */
+@media (max-width: 768px) {
+  table {
+    display: block;
+  }
+  thead {
+    display: none; /* hide header */
+  }
+  tbody tr {
+    display: block;
+    margin-bottom: 15px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 12px 15px;
+  }
+  tbody tr td {
+    display: block;
+    border: none;
+    padding: 6px 0;
+    white-space: normal;
+    font-size: 0.95rem;
+  }
+  tbody tr td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    color: #444;
+    margin-bottom: 2px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+
 .navbar-brand .brand-text {
   font-size: 2.2rem;   /* bigger on desktop */
   font-weight: 500;
