@@ -5,7 +5,7 @@ pipeline {
         IMAGE_NAME = "victoriaagro-site"
         CONTAINER_NAME = "victoriaagro_container"
         REPO_URL = "https://github.com/sksree/VICTORIA-AGROSERVE-.git"
-        WORK_DIR = "/opt/victoriaagro"
+        WORK_DIR = "${WORKSPACE}/victoriaagro"
     }
 
     stages {
