@@ -25,6 +25,7 @@ pipeline {
             steps {
                 script {
                     dir(WORK_DIR) {
+                        // Build Docker image
                         app = docker.build("${IMAGE_NAME}")
                     }
                 }
@@ -34,7 +35,7 @@ pipeline {
         stage('Deploy Container') {
             steps {
                 script {
-                    // Stop and remove old container if exists
+                    // Stop and remove old container if it exists
                     sh """
                         if [ \$(docker ps -q -f name=$CONTAINER_NAME) ]; then
                             docker stop $CONTAINER_NAME
@@ -43,7 +44,7 @@ pipeline {
                     """
 
                     // Run the new container
-                    app.run("--name ${CONTAINER_NAME} -p 80:80")
+                    sh "docker run -d --name ${CONTAINER_NAME} -p 80:80 ${IMAGE_NAME}"
                 }
             }
         }
