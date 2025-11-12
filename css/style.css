@@ -360,20 +360,35 @@ td[data-label="PROJECT DESCRIPTION"] {
 
 
 .navbar-brand .brand-text {
-  font-size: 2.2rem;   /* bigger on desktop */
-  font-weight: 500;
+  font-size: 2rem;  /* desktop */
+  font-weight: 800;
   white-space: nowrap;
-  font-family: Lucida Sans,Verdana, Arial, Tahoma, Serif;
+  font-family: "Cinzel", serif;
   font-variant: small-caps;
+  display: flex;
+}
+/* medium screens */
+@media (max-width: 1200px) {
+  .navbar-brand .brand-text {
+    font-size: 25px; /* smaller for tablets/laptops */
+  }
 }
 
+/* medium screens */
+@media (max-width: 992px) {
+  .navbar-brand .brand-text {
+    font-size: 25px; /* smaller for tablets/laptops */
+  }
+}
+
+/* mobile */
 @media (max-width: 768px) {
   .navbar-brand {
     flex-direction: column;
     align-items: flex-start;
   }
   .navbar-brand .brand-text {
-    font-size: 1rem;   /* smaller on mobile */
+    font-size: 1rem;
     white-space: normal;
     margin-top: 5px;
   }
