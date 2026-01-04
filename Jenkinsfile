@@ -35,21 +35,19 @@ pipeline {
         stage('Deploy Container') {
             steps {
                 script {
-                    // Stop and remove old container if it exists
+                    // Stop old container if running
                     sh """
-                        if [ \$(docker ps -q -f name=$CONTAINER_NAME) ]; then
-                            docker stop $CONTAINER_NAME
-                            docker rm $CONTAINER_NAME
-                        fi
+                        docker stop $CONTAINER_NAME 2>/dev/null || true
+                        docker rm $CONTAINER_NAME 2>/dev/null || true
                     """
 
                     // Run the new container
                     sh """
-    docker run -d --name ${CONTAINER_NAME} \
-      -p 80:80 -p 443:443 \
-      -v /etc/letsencrypt:/etc/letsencrypt:ro \
-      ${IMAGE_NAME}
-"""
+                        docker run -d --name ${CONTAINER_NAME} \
+                          -p 80:80 -p 443:443 \
+                          -v /etc/letsencrypt:/etc/letsencrypt:ro \
+                          ${IMAGE_NAME}
+                    """
                 }
             }
         }
